@@ -39,7 +39,7 @@ public class ExceptionsTest {
     @Test
     @Order(1)
     @DisplayName("Warrior: enterBerserkMode() lanza BerserkAlreadyActiveException si ya está furioso")
-    void testEnterBerserkModeThrowsExceptionWhenAlreadyFurious() {
+    void testEnterBerserkModeThrowsExceptionWhenAlreadyFurious()  {
         Warrior warrior = new Warrior("Rager", 100, 20);
         warrior.enterBerserkMode();
 

@@ -12,6 +12,15 @@ public class Mage extends Character {
     }
 
     public void castSpell(Character target) {
+        if( target == null){
+            throw new InvalidTargetException("No se puede realizar una acción a un objetivo nulo");
+        }
+        if( this.mana < 10) {
+            throw new InsufficientManaException(this.name + " no tiene maná suficiente");
+        }
+        if (target.health == 0) {
+            throw new CharacterAlreadyDeadException(target.getName() + " ya está muerto");
+        }
 
         if (this.mana - 10 >= 0) {
             this.mana -= 10;
@@ -21,8 +30,17 @@ public class Mage extends Character {
     }
 
     public void heal(Character target) {
-            this.mana -= 15;
-            target.health += 20;
+        if( target == null){
+            throw new InvalidTargetException("No se puede realizar una acción a un objetivo nulo");
+        }
+        if( this.mana < 15) {
+            throw new InsufficientManaException(this.name + " no tiene maná suficiente");
+        }
+        if (target.health == 0) {
+            throw new CharacterAlreadyDeadException(target.getName() + " ya está muerto");
+        }
+        this.mana -= 15;
+        target.health += 20;
     }
 
 }
